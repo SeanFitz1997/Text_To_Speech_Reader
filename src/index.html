@@ -25,6 +25,7 @@
 	<textarea name="text"></textarea>
 </div>
 
+<script src="chunkify.js"></script>
 <script>
 	const msg = new SpeechSynthesisUtterance();
 	let voices = [];
@@ -54,12 +55,17 @@
 	function toggle(startOver = true) {
 		speechSynthesis.cancel();
 		if (startOver) {
-			speechSynthesis.speak(msg);
+			speechUtteranceChunker(msg, {
+				chunkLength: 120
+			}, function () {
+				//some code to execute when done
+				console.log('done');
+			});
 		}
 	}
 
+
 	function setOption() {
-		console.log(this.name, this.value);
 		msg[this.name] = this.value;
 		toggle();
 	}
