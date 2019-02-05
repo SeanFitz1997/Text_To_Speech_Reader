@@ -27,13 +27,13 @@
 
 <script src="chunkify.js"></script>
 <script>
-	const msg = new SpeechSynthesisUtterance();
+	//const msg = new SpeechSynthesisUtterance();
 	let voices = [];
 	const voicesDropdown = document.querySelector('[name="voice"]');
 	const options = document.querySelectorAll('[type="number"], [name="text"]');
 	const speakButton = document.querySelector('#play');
 	const stopButton = document.querySelector('#stop');
-	msg.text = document.querySelector('[name="text"]').value;
+	var msg = document.querySelector('[name="text"]').value;
 
 	function populateVoices() {
 		voices = this.getVoices();
